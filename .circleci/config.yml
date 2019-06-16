@@ -3,8 +3,13 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.3
+      - image: circleci/postgres:11.3-alpine
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: backend_test
     steps:
       - checkout
+      - run: sudo apt install -y postgresql-client || true
       - run:
           name: install gems
           command: bundle install --with development test --without production --jobs 4 --retry 3
