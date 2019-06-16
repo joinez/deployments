@@ -5,7 +5,14 @@ jobs:
       - image: circleci/ruby:2.6.3
     steps:
       - checkout
-      - run: ./script/cicrleci-setup.sh
+      - run:
+          name: install gems
+          command: bundle install --with development test --without production --jobs 4 --retry 3
+          working_directory: backend
+      - run:
+          name: setup db
+          command: RAILS_ENV=test rails db:create db:migrate
+          working_directory: backend
       - run:
           name: rspec
           command: rspec
