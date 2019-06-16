@@ -74,3 +74,17 @@ For services:
   }
 }
 ```
+
+## Testing
+
+The backend uses rspec for its unit tests. Run them with
+
+```sh
+rspec
+```
+
+Or if you️ ❤️  TDD
+
+```sh
+bundle exec guard -c
+```
