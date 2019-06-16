@@ -1,0 +1,31 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'db/schema.rb'
+
+Naming/UncommunicativeMethodParamName:
+  Exclude:
+    - 'app/controllers/graphql_controller.rb'
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 50
+  Exclude:
+    - 'app/controllers/graphql_controller.rb'
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Include:
+    - 'app/**/*.rb'

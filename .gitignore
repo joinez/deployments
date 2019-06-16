@@ -1,0 +1,19 @@
+# System files
+.DS_Store
+.vscode/
+
+# Bundle
+**/.bundle
+
+# Log & tmp
+backend/log/*
+backend/tmp/*
+!backend/log/.keep
+!backend/tmp/.keep
+
+# Storage
+backendstorage/*
+!backend/storage/.keep
+
+# Secrets
+backend/config/master.key

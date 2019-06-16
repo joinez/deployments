@@ -1,0 +1,22 @@
+source 'https://rubygems.org'
+
+ruby '2.6.3'
+
+gem 'awesome_print'
+gem 'bootsnap'
+gem 'graphiql-rails'
+gem 'graphql'
+gem 'pg'
+gem 'puma'
+gem 'rails', '~> 6.0.0.rc1'
+
+group :development do
+  gem 'listen'
+  gem 'rubocop-rails'
+  gem 'spring'
+  gem 'spring-watcher-listen'
+end
+
+group :development, :test do
+  gem 'pry-byebug'
+end
