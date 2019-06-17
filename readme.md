@@ -10,7 +10,7 @@ local machine for development and testing purposes.
 ### Prerequisites
 
 - Docker & Docker Compose
-- Ruby (use current [version](.ruby-version))
+- Ruby (use current [version](backend/.ruby-version))
 
 ### Setup
 
