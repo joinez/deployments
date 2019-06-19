@@ -23,7 +23,7 @@ jobs:
             gem install bundler --conservative &&
             bundle check --path=vendor/bundle ||
             bundle install --with development test --without production
-              --path=vendor/bundle --jobs 4 --retry 3
+            --path=vendor/bundle --jobs 4 --retry 3
           working_directory: backend
       - save_cache:
           key: deployments-{{ checksum "backend/Gemfile.lock" }}
