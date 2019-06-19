@@ -12,18 +12,18 @@ jobs:
           POSTGRES_DB: backend_test
     steps:
       - checkout
-      - run: sudo apt install -y postgresql-client || true
       - restore_cache:
           keys:
             - deployments-{{ checksum "backend/Gemfile.lock" }}
             - deployments-
+      - run: sudo apt install -y postgresql-client || true
       - run:
           name: install gems
           command: >
             gem install bundler --conservative &&
             bundle check --path=vendor/bundle ||
             bundle install --with development test --without production
-            --path=vendor/bundle --jobs 4 --retry 3
+              --path=vendor/bundle --jobs 4 --retry 3
           working_directory: backend
       - save_cache:
           key: deployments-{{ checksum "backend/Gemfile.lock" }}
@@ -31,9 +31,9 @@ jobs:
             - backend/vendor/bundle
       - run:
           name: setup db
-          command: RAILS_ENV=test rails db:create db:migrate
+          command: RAILS_ENV=test bundle exec rails db:create db:migrate
           working_directory: backend
       - run:
           name: rspec
-          command: rspec
+          command: bundle exec rspec
           working_directory: backend
