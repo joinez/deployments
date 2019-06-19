@@ -15,7 +15,7 @@ jobs:
       - run: sudo apt install -y postgresql-client || true
       - restore_cache:
           keys:
-            - deployments-{{ checksum "Gemfile.lock" }}
+            - deployments-{{ checksum "backend/Gemfile.lock" }}
             - deployments-
       - run:
           name: install gems
@@ -26,9 +26,9 @@ jobs:
             --path=vendor/bundle --jobs 4 --retry 3
           working_directory: backend
       - save_cache:
-          key: deployments-{{ checksum "Gemfile.lock" }}
+          key: deployments-{{ checksum "backend/Gemfile.lock" }}
           paths:
-            - vendor/bundle
+            - backend/vendor/bundle
       - run:
           name: setup db
           command: RAILS_ENV=test rails db:create db:migrate
