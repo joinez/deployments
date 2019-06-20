@@ -75,6 +75,24 @@ For services:
 }
 ```
 
+## Creating data
+
+Use this mutation for creating new deployment entries:
+
+```sh
+mutation {
+  logDeployment(
+    input: { service: "Application 2", status: "started" }
+  ) {
+    deployment {
+      id
+      startedAt
+      finishedAt
+    }
+  }
+}
+```
+
 ## Testing
 
 The backend uses rspec for its unit tests. Run them with
