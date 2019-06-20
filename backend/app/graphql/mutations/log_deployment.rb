@@ -9,31 +9,33 @@ module Mutations
     field :errors, [String], null: false
 
     def resolve(status:, service:)
-      service = Service.find_or_create_by(name: service)
-      if status == 'started'
-        deployment = Deployment.new(service: service, started_at: Time.zone.now)
-        if deployment.save
+      case status
+      when 'started'
+        started = StartDeployment.call(service: service, status: status)
+
+        if started.success?
           {
-            deployment: deployment,
+            deployment: started.deployment,
             errors: []
           }
         else
           {
             deployment: nil,
-            errors: deployment.errors.full_messages
+            errors: started.deployment.errors.full_messages
           }
         end
-      elsif status == 'finished'
-        deployment = Deployment.where(service: service).last
-        if deployment.update(finished_at: Time.zone.now)
+      when 'finished'
+        finished = FinishDeployment.call(service: service, status: status)
+
+        if finished.success?
           {
-            deployment: deployment,
+            deployment: finished.deployment,
             errors: []
           }
         else
           {
-            deployment: deployment,
-            errors: deployment.errors.full_messages
+            deployment: finished.deployment,
+            errors: finished.deployment.errors.full_messages
           }
         end
       else
