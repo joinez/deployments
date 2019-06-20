@@ -105,6 +105,10 @@ mutation {
     }
   }
 }
+
+# Or use curl to start or finish a deployment:
+curl -i -H 'Content-Type: application/json' -X POST -d '{"query": "mutation { startDeployment(input: { service: \"Application 2\" }) { deployment { id } } }"}' localhost:3000/graphql
+curl -i -H 'Content-Type: application/json' -X POST -d '{"query": "mutation { finishDeployment(input: { service: \"Application 2\" }) { deployment { id } } }"}' localhost:3000/graphql
 ```
 
 ## Testing
