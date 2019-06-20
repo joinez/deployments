@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-class StartDeployment
+class FinishDeployments
   include Interactor
 
   def call
     service = Service.find_or_create_by(name: context.service)
 
-    deployment = Deployment.new(service: service, started_at: Time.zone.now)
+    deployment = Deployment.where(service: service).last
 
-    if deployment.save
+    if deployment.update(finished_at: Time.zone.now)
       context.deployment = deployment
     else
       context.fail!

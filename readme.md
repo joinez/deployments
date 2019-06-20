@@ -80,9 +80,23 @@ For services:
 Use this mutation for creating new deployment entries:
 
 ```sh
+# Start
 mutation {
-  logDeployment(
-    input: { service: "Application 2", status: "started" }
+  startDeployment(
+    input: { service: "Application 2" }
+  ) {
+    deployment {
+      id
+      startedAt
+      finishedAt
+    }
+  }
+}
+
+# Finish
+mutation {
+  finishDeployment(
+    input: { service: "Application 2" }
   ) {
     deployment {
       id
