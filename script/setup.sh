@@ -1,7 +1,7 @@
 cd backend
-gem install bundler --conservative
+gem install bundler -N -v "< 2"
 bundle check || bundle
-rails db:prepare db:seed
+rails db:setup
 rails log:clear tmp:clear
 rails restart
 cd -

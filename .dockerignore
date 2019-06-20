@@ -1,0 +1,10 @@
+.bundle
+.circleci*
+.docker*
+.DS_Store
+.git*
+.vscode
+/script
+Docker*
+docker*
+readme*

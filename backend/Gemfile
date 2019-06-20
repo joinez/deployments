@@ -4,7 +4,6 @@ ruby '2.6.3'
 
 gem 'awesome_print'
 gem 'bootsnap'
-gem 'graphiql-rails'
 gem 'graphql'
 gem 'interactor'
 gem 'pg'
@@ -12,6 +11,7 @@ gem 'puma'
 gem 'rails', '~> 6.0.0.rc1'
 
 group :development do
+  gem 'graphiql-rails'
   gem 'guard-rspec', require: false
   gem 'listen'
   gem 'rubocop-rails'
