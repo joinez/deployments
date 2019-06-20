@@ -33,7 +33,10 @@ jobs:
           name: setup db
           command: RAILS_ENV=test bundle exec rails db:create db:migrate
           working_directory: backend
+      - run: mkdir ~/rspec
       - run:
           name: rspec
-          command: bundle exec rspec
+          command: bundle exec rspec -f d -f RspecJunitFormatter -o ~/rspec/rspec.xml
           working_directory: backend
+      - store_test_results:
+          path: ~/rspec
