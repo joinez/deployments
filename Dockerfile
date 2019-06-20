@@ -24,7 +24,7 @@ RUN apk add --update --no-cache --virtual .gem-deps \
   && find /usr/local/bundle/gems/ -name "*.o" -delete
 
 # ------------------------------------------------------------------------------
-# gems: install packges and gems for dev & test
+# dev-backend: install packges and gems for dev & test backend
 # ------------------------------------------------------------------------------
 FROM ruby:${RUBY_VERSION}-alpine3.9 AS dev-backend
 
