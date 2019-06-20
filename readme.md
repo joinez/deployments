@@ -1,4 +1,4 @@
-# Deployments
+# Deployments [![CircleCI](https://circleci.com/gh/joinez/deployments.svg?style=svg)](https://circleci.com/gh/joinez/deployments)
 
 Keep track of all deployments across all your environments
 
