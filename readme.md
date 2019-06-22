@@ -11,6 +11,7 @@ local machine for development and testing purposes.
 
 - Docker & Docker Compose
 - Ruby (use current [version](backend/.ruby-version))
+- Node (use current [stable release](https://nodejs.org/en/about/releases/))
 
 ### Setup
 
@@ -26,6 +27,12 @@ Start the server
 cd backend
 rails s
 ```
+Start the vue frontend
+```sh
+cd frontend
+npm run serve
+```
+The app is then available at http://localhost:8080 🎉
 
 ## Accessing data
 
