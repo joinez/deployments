@@ -136,6 +136,7 @@ GEM
       pry (~> 0.10)
     puma (3.12.1)
     rack (2.0.7)
+    rack-cors (1.0.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.0.rc1)
@@ -244,6 +245,7 @@ DEPENDENCIES
   pg
   pry-byebug
   puma
+  rack-cors
   rails (~> 6.0.0.rc1)
   rspec-rails
   rspec_junit_formatter

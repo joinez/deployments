@@ -12,8 +12,14 @@ backend/tmp/*
 !backend/tmp/.keep
 
 # Storage
-backendstorage/*
+backend/storage/*
 !backend/storage/.keep
 
 # Secrets
 backend/config/master.key
+
+# Frontend
+frontend/dist
+frontend/src/assets
+node_modules
+npm-debug.log*
