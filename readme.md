@@ -17,11 +17,16 @@ local machine for development and testing purposes.
 
 Get your development environment up and running with following steps
 
+#### Setup with docker
+```sh
+./script/build.sh
+docker-compose up -d
+```
+#### Or setup locally
 ```sh
 # Info: this step can be repeated to update you enviroment as well
 ./script/setup.sh
 ```
-
 Start the server
 ```sh
 cd backend

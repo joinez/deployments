@@ -1,3 +1,5 @@
+set -e
+
 # Setup backend
 echo "\nSetting up backend.."
 cd backend

@@ -1,6 +1,16 @@
 version: "3.7"
 
 services:
+  frontend:
+    image: deployments-frontend
+    container_name: deployments_frontend
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/usr/src
+    ports:
+      - 8080:8080
+    command: npm run serve
   backend:
     image: deployments-backend
     container_name: deployments_backend
