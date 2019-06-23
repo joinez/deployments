@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  backend:
     docker:
       - image: circleci/ruby:2.6.3
         environment:
@@ -14,8 +14,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - deployments-{{ checksum "backend/Gemfile.lock" }}
-            - deployments-
+            - deployments-gems-{{ checksum "backend/Gemfile.lock" }}
+            - deployments-gems-
       - run: sudo apt install -y postgresql-client || true
       - run:
           name: install gems
@@ -26,7 +26,7 @@ jobs:
             --path=vendor/bundle --jobs 4 --retry 3
           working_directory: backend
       - save_cache:
-          key: deployments-{{ checksum "backend/Gemfile.lock" }}
+          key: deployments-gems-{{ checksum "backend/Gemfile.lock" }}
           paths:
             - backend/vendor/bundle
       - run:
@@ -40,3 +40,31 @@ jobs:
           working_directory: backend
       - store_test_results:
           path: ~/rspec
+  frontend:
+    docker:
+      - image: circleci/node:12.4.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - deployments-npms-{{ checksum "frontend/package-lock.json" }}
+            - deployments-npms-
+      - run:
+          name: install npms
+          command: npm ci
+          working_directory: frontend
+      - save_cache:
+          key: deployments-{{ checksum "frontend/package-lock.json" }}
+          paths:
+            - backend/vendor/bundle
+      - run:
+          name: lint
+          command: npm run lint
+          working_directory: frontend
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - backend
+      - frontend
