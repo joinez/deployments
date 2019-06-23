@@ -58,7 +58,7 @@ jobs:
           command: npm ci
           working_directory: frontend
       - save_cache:
-          key: deployments-{{ checksum "frontend/package-lock.json" }}
+          key: deployments-npms-{{ checksum "frontend/package-lock.json" }}
           paths:
             - backend/vendor/bundle
       - run:
