@@ -30,6 +30,10 @@ jobs:
           paths:
             - backend/vendor/bundle
       - run:
+          name: rubocop
+          command: rubocop
+          working_directory: backend
+      - run:
           name: setup db
           command: RAILS_ENV=test bundle exec rails db:create db:migrate
           working_directory: backend
