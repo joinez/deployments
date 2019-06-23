@@ -31,7 +31,7 @@ jobs:
             - backend/vendor/bundle
       - run:
           name: rubocop
-          command: rubocop
+          command: bundle exec rubocop
           working_directory: backend
       - run:
           name: setup db
