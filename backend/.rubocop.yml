@@ -4,6 +4,7 @@ AllCops:
   Exclude:
     - 'bin/*'
     - 'db/schema.rb'
+    - 'vendor/bundle/**/*'
 
 Naming/UncommunicativeMethodParamName:
   Exclude:
