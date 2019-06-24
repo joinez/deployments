@@ -8,6 +8,7 @@ services:
       - backend
     volumes:
       - ./frontend:/usr/src
+      - /usr/src/node_modules
     ports:
       - 8080:8080
     command: npm run serve
