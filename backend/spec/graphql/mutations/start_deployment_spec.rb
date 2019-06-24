@@ -12,7 +12,7 @@ module Mutations
       <<~GQL
         mutation {
           startDeployment(
-            input: { service: "#{service}" }
+            input: { service: "#{service}", buildId: "1" }
           ) {
             deployment {
               id

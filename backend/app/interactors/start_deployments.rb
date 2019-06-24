@@ -6,7 +6,7 @@ class StartDeployments
   def call
     service = Service.find_or_create_by(name: context.service)
 
-    deployment = Deployment.new(service: service, started_at: Time.zone.now)
+    deployment = Deployment.find_or_create_by(service: service, build_id: context.build_id)
 
     if deployment.save
       context.deployment = deployment

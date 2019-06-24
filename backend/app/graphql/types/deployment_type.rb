@@ -5,6 +5,7 @@ module Types
     graphql_name 'Deployment'
 
     field :id, ID, null: false
+    field :build_id, String, null: false
     field :started_at, GraphQL::Types::ISO8601DateTime, null: false
     field :finished_at, GraphQL::Types::ISO8601DateTime, null: true
 

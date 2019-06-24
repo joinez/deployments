@@ -6,7 +6,7 @@ class FinishDeployments
   def call
     service = Service.find_or_create_by(name: context.service)
 
-    deployment = Deployment.where(service: service).last
+    deployment = Deployment.where(service: service, build_id: context.build_id).last
 
     if deployment.update(finished_at: Time.zone.now)
       context.deployment = deployment

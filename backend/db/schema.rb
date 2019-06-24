@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_06_15_214700) do
   enable_extension "plpgsql"
 
   create_table "deployments", force: :cascade do |t|
+    t.string "build_id"
     t.datetime "started_at"
     t.datetime "finished_at"
     t.bigint "service_id", null: false
