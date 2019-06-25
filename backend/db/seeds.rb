@@ -4,10 +4,10 @@ s3 = Service.find_or_create_by(name: 'Application 2')
 
 Deployment.destroy_all
 
-Deployment.create(service: s1, started_at: 30.minutes.ago, finished_at: 27.minutes.ago)
-Deployment.create(service: s1, started_at: 14.minutes.ago, finished_at: 12.minutes.ago)
-Deployment.create(service: s2, started_at: 49.minutes.ago, finished_at: 40.minutes.ago)
-Deployment.create(service: s3, started_at: 3.minutes.ago)
+FactoryBot.create(:deployment, service: s1)
+FactoryBot.create(:deployment, service: s1)
+FactoryBot.create(:deployment, service: s2)
+FactoryBot.create(:deployment, service: s3, finished_at: nil)
 
 # rubocop:disable Rails/Output
 puts "Seeded #{Service.count} services and #{Deployment.count} deployments."
