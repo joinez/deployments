@@ -50,6 +50,7 @@ For deployments:
 {
   deployments {
     id
+    buildId
     startedAt
     finishedAt
     service {
@@ -62,6 +63,7 @@ For deployments:
 # Single deployment
 {
   deployment(id: 1) {
+    buildId
     startedAt
     finishedAt
   }
@@ -95,10 +97,11 @@ Use this mutation for creating new deployment entries:
 # Start
 mutation {
   startDeployment(
-    input: { service: "Application 2" }
+    input: { service: "Application 2", buildId: "1" }
   ) {
     deployment {
       id
+      buildId
       startedAt
       finishedAt
     }
@@ -108,10 +111,11 @@ mutation {
 # Finish
 mutation {
   finishDeployment(
-    input: { service: "Application 2" }
+    input: { service: "Application 2", buildId: "1" }
   ) {
     deployment {
       id
+      buildId
       startedAt
       finishedAt
     }
@@ -119,8 +123,8 @@ mutation {
 }
 
 # Or use curl to start or finish a deployment:
-curl -i -H 'Content-Type: application/json' -X POST -d '{"query": "mutation { startDeployment(input: { service: \"Application 2\" }) { deployment { id } } }"}' localhost:3000/graphql
-curl -i -H 'Content-Type: application/json' -X POST -d '{"query": "mutation { finishDeployment(input: { service: \"Application 2\" }) { deployment { id } } }"}' localhost:3000/graphql
+curl -i -H 'Content-Type: application/json' -X POST -d '{"query": "mutation { startDeployment(input: { service: \"Application 3\", buildId: \"1\" }) { deployment { id } } }"}' localhost:3000/graphql
+curl -i -H 'Content-Type: application/json' -X POST -d '{"query": "mutation { finishDeployment(input: { service: \"Application 3\", buildId: \"1\" }) { deployment { id } } }"}' localhost:3000/graphql
 ```
 
 ## Testing
