@@ -31,7 +31,7 @@ FROM node:${NODE_VERSION}-alpine AS npms
 
 WORKDIR /usr/src
 
-COPY frontend/package*json .
+COPY frontend/package*json ./
 
 RUN npm i && rm -rf /root/.npm/_cacache
 
