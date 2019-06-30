@@ -80,11 +80,11 @@ jobs:
             - docker-cache-backend
       - run: |
           mkdir -p caches
-          docker load < gems.tar || true
+          docker load < caches/gems.tar || true
           docker build -t gems --target gems --cache-from gems backend
           docker save gems > caches/gems.tar
 
-          docker load < backend.tar || true
+          docker load < caches/backend.tar || true
           docker build -t backend --target dev --cache-from gems --cache-from backend backend
           docker save backend > caches/backend.tar
 
