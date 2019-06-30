@@ -79,14 +79,14 @@ jobs:
           keys:
             - docker-cache-backend
       - run: |
-          mkdir -p /caches
+          mkdir -p caches
           docker load < gems.tar || true
           docker build -t gems --target gems --cache-from gems backend
-          docker save gems > /caches/gems.tar
+          docker save gems > caches/gems.tar
 
           docker load < backend.tar || true
           docker build -t backend --target dev --cache-from gems --cache-from backend backend
-          docker save backend > /caches/backend.tar
+          docker save backend > caches/backend.tar
 
           docker tag backend joinez/deployments-backend
           docker login -u $HUB_USER -p $HUB_PASSWORD
@@ -94,11 +94,11 @@ jobs:
       - save_cache:
           key: docker-cache-gems
           paths:
-            - /caches/gems.tar
+            - caches/gems.tar
       - save_cache:
           key: docker-cache-backend
           paths:
-            - /caches/backend.tar
+            - caches/backend.tar
 
 workflows:
   version: 2
