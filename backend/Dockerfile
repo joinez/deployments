@@ -5,6 +5,8 @@ ARG RUBY_VERSION=2.6.3
 # ------------------------------------------------------------------------------
 FROM ruby:${RUBY_VERSION}-alpine3.9 AS gems
 
+ENV CACHE_HIT 1
+
 WORKDIR /usr/src
 
 COPY Gemfile* ./
@@ -27,6 +29,8 @@ RUN apk add --update --no-cache --virtual .gem-deps \
 # dev: install packges and gems for dev & test
 # ------------------------------------------------------------------------------
 FROM ruby:${RUBY_VERSION}-alpine3.9 AS dev
+
+ENV CACHE_HIT 2
 
 WORKDIR /usr/src
 
