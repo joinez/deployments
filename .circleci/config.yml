@@ -74,10 +74,12 @@ jobs:
           docker_layer_caching: true
       - restore_cache:
           keys:
-            - docker-cache-gems
+            - docker-cache-gems-${CIRCLE_BRANCH}-`expr ${CIRCLE_BUILD_NUM} - 1`
+            - docker-cache-gems-
       - restore_cache:
           keys:
-            - docker-cache-backend
+            - docker-cache-backend-${CIRCLE_BRANCH}-`expr ${CIRCLE_BUILD_NUM} - 1`
+            - docker-cache-backend-
       - run: |
           mkdir -p caches
           docker load < caches/gems.tar || true
@@ -92,11 +94,11 @@ jobs:
           docker login -u $HUB_USER -p $HUB_PASSWORD
           docker push joinez/deployments-backend
       - save_cache:
-          key: docker-cache-gems
+          key: docker-cache-gems-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM}
           paths:
             - caches/gems.tar
       - save_cache:
-          key: docker-cache-backend
+          key: docker-cache-backend-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM}
           paths:
             - caches/backend.tar
 
