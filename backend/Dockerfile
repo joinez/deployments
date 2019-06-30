@@ -14,7 +14,7 @@ RUN apk add --update --no-cache --virtual .gem-deps \
   postgresql-dev \
   tzdata \
   && cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
-  && gem install bundler -N -v "< 2" \
+  && gem install bundler -N \
   && bundle install --without development test --with production \
     --no-cache --jobs 4 --retry 3 \
   && apk del --no-network .gem-deps \

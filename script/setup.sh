@@ -3,7 +3,7 @@ set -e
 # Setup backend
 echo "\nSetting up backend.."
 cd backend
-gem install bundler -N -v "< 2"
+gem install bundler -N
 bundle check 1>/dev/null || bundle
 rails db:reset
 echo "Cleaning log & tmp files"
