@@ -1,0 +1,9 @@
+**/.bundle
+**/.docker*
+**/.DS_Store
+**/.git*
+**/.vscode
+**/Docker*
+**/docker*
+**/node_modules
+**/readme*

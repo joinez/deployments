@@ -65,7 +65,7 @@ jobs:
           name: lint
           command: npm run lint
           working_directory: frontend
-  build:
+  build-backend:
     docker:
       - image: circleci/ruby:2.6.3
     steps:
@@ -73,7 +73,7 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run: |
-          docker build -t joinez/deployments-backend --target dev-backend .
+          docker build -t joinez/deployments-backend --target dev backend
           docker login -u $HUB_USER -p $HUB_PASSWORD
           docker push joinez/deployments-backend
 
@@ -83,7 +83,7 @@ workflows:
     jobs:
       - backend
       - frontend
-      - build:
+      - build-backend:
           requires:
             - backend
             - frontend

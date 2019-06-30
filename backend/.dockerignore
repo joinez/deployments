@@ -7,5 +7,3 @@
 **/docker*
 **/node_modules
 **/readme*
-/.circleci
-/script
