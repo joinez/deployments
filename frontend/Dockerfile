@@ -5,6 +5,8 @@ ARG NODE_VERSION=12.4.0
 # ------------------------------------------------------------------------------
 FROM node:${NODE_VERSION}-alpine AS npms
 
+ENV CACHE_ID 1
+
 WORKDIR /usr/src
 
 COPY package*json ./
@@ -15,6 +17,8 @@ RUN npm i && rm -rf /root/.npm/_cacache
 # dev: copy npm packages used for dev & test
 # ------------------------------------------------------------------------------
 FROM node:${NODE_VERSION}-alpine AS dev
+
+ENV CACHE_ID 2
 
 WORKDIR /usr/src
 

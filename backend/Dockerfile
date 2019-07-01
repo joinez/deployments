@@ -5,7 +5,7 @@ ARG RUBY_VERSION=2.6.3
 # ------------------------------------------------------------------------------
 FROM ruby:${RUBY_VERSION}-alpine3.9 AS gems
 
-ENV CACHE_HIT 1
+ENV CACHE_ID 1
 
 WORKDIR /usr/src
 
@@ -30,7 +30,7 @@ RUN apk add --update --no-cache --virtual .gem-deps \
 # ------------------------------------------------------------------------------
 FROM ruby:${RUBY_VERSION}-alpine3.9 AS dev
 
-ENV CACHE_HIT 2
+ENV CACHE_ID 2
 
 WORKDIR /usr/src
 
