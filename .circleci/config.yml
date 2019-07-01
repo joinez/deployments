@@ -70,8 +70,7 @@ jobs:
       - image: circleci/ruby:2.6.3
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
+      - setup_remote_docker # Reminder: paid feature docker_layer_caching: true
       - restore_cache:
           keys:
             - docker-cache-gems-{{ .Branch }}
@@ -99,6 +98,39 @@ jobs:
           key: docker-cache-backend-{{ .Branch }}-{{ .BuildNum }}
           paths:
             - caches/backend.tar
+  build-frontend:
+    docker:
+      - image: circleci/node:12.4.0
+    steps:
+      - checkout
+      - setup_remote_docker
+      - restore_cache:
+          keys:
+            - docker-cache-npms-{{ .Branch }}
+      - restore_cache:
+          keys:
+            - docker-cache-frontend-{{ .Branch }}
+      - run: |
+          mkdir -p caches
+          docker load < caches/npms.tar || true
+          docker build -t npms --target npms --cache-from npms frontend
+          docker save npms > caches/npms.tar
+
+          docker load < caches/frontend.tar || true
+          docker build -t frontend --target dev --cache-from npms --cache-from frontend frontend
+          docker save frontend > caches/frontend.tar
+
+          docker tag frontend joinez/deployments-frontend
+          docker login -u $HUB_USER -p $HUB_PASSWORD
+          docker push joinez/deployments-frontend
+      - save_cache:
+          key: docker-cache-npms-{{ .Branch }}-{{ .BuildNum }}
+          paths:
+            - caches/npms.tar
+      - save_cache:
+          key: docker-cache-frontend-{{ .Branch }}-{{ .BuildNum }}
+          paths:
+            - caches/frontend.tar
 
 workflows:
   version: 2
@@ -107,6 +139,11 @@ workflows:
       - backend
       - frontend
       - build-backend:
+          requires:
+            - backend
+            - frontend
+          context: docker_hub
+      - build-frontend:
           requires:
             - backend
             - frontend
