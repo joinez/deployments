@@ -84,7 +84,7 @@ jobs:
           docker save gems > caches/gems.tar
 
           docker load < caches/backend.tar || true
-          docker build -t backend --target dev --cache-from gems --cache-from backend backend
+          docker build -t backend --target production --cache-from gems --cache-from backend backend
           docker save backend > caches/backend.tar
 
           docker tag backend joinez/deployments-backend

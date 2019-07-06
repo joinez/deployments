@@ -7,3 +7,6 @@
 **/docker*
 **/node_modules
 **/readme*
+**/log
+**/tmp
+**/master.key

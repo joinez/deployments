@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  backend:
+    image: joinez/deployments-backend
+    container_name: deployments_backend
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      SECRET_KEY_BASE: x
+    ports:
+      - 3000:3000
+    command: sh -c "rails s -b 0.0.0.0"
+  db:
+    image: postgres:11.3-alpine
+    container_name: deployments_db
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_DB: deployment_prod
