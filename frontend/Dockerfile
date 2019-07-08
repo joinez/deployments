@@ -1,4 +1,4 @@
-ARG NODE_VERSION=12.4.0
+ARG NODE_VERSION=12.6.0
 
 # ------------------------------------------------------------------------------
 # npms: install (tmp) build packages and npm packages
