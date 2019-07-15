@@ -1,8 +1,8 @@
-RSpec.describe Service, type: :model do
-  let(:service) { build(:service) }
+RSpec.describe Cloud, type: :model do
+  let(:cloud) { build(:cloud) }
 
   it 'is valid' do
-    expect(service).to be_valid
+    expect(cloud).to be_valid
   end
 
   describe 'validations' do

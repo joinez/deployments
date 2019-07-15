@@ -1,6 +1,6 @@
 module Types
   RSpec.describe DeploymentType, type: :request do
-    it 'query object' do
+    xit 'query object' do
       deployment = create(:deployment)
       post '/graphql', params: { query: query_object(id: deployment.id) }
 
@@ -14,7 +14,7 @@ module Types
       )
     end
 
-    it 'query all' do
+    xit 'query all' do
       create_list(:deployment, 2)
       post '/graphql', params: { query: query_all }
 

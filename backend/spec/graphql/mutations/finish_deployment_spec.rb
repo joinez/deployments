@@ -2,7 +2,7 @@ module Mutations
   RSpec.describe FinishDeployment, type: :request do
     let(:service) { build(:service) }
 
-    it 'finish existing deployment' do
+    xit 'finish existing deployment' do
       deployment = create(:deployment, service: service, finished_at: nil)
       expect do
         post '/graphql', params: { query: query(service: service.name, build_id: deployment.build_id) }

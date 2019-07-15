@@ -1,7 +1,8 @@
 FactoryBot.define do
-  factory :service do
+  factory :environment do
     sequence :name do |n|
-      "Service #{n}"
+      "Environment #{n}"
     end
+    cloud
   end
 end

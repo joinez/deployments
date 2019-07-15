@@ -1,6 +1,6 @@
 module Types
   RSpec.describe ServiceType, type: :request do
-    it 'query object' do
+    xit 'query object' do
       service = create(:service)
       post '/graphql', params: { query: query_object(id: service.id) }
 
@@ -13,7 +13,7 @@ module Types
       )
     end
 
-    it 'query all' do
+    xit 'query all' do
       create_list(:service, 2)
       post '/graphql', params: { query: query_all }
 

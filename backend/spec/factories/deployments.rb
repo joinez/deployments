@@ -1,8 +1,10 @@
 FactoryBot.define do
   factory :deployment do
-    service
-    sequence(:build_id)
-    started_at { rand(10..100).minutes.ago }
-    finished_at { started_at + rand(1...10).minutes }
+    sequence :build_url do |n|
+      "example.com/build/#{n}"
+    end
+    success { true }
+    duration { rand(30..240) }
+    environment
   end
 end

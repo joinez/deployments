@@ -50,10 +50,10 @@ For deployments:
 {
   deployments {
     id
-    buildId
-    startedAt
-    finishedAt
-    service {
+    buildUrl
+    success
+    duration
+    environment {
       id
       name
     }
