@@ -9,7 +9,8 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
 
-    field :current_version, Types::CurrentVersionType, null: true
     field :current_versions, [Types::CurrentVersionType], null: true
+    field :deployments, [Types::DeploymentType], null: true
+    field :environments, [Types::EnvironmentType], null: true
   end
 end

@@ -10,6 +10,7 @@ module Types
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
 
     field :environment, Types::EnvironmentType, null: false
+    field :deployment, Types::DeploymentType, null: false
     field :service, Types::ServiceType, null: false
   end
 end

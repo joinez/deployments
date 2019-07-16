@@ -12,5 +12,7 @@ module Types
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
 
     field :environment, Types::EnvironmentType, null: false
+    field :current_versions, [Types::CurrentVersionType], null: false
+    field :services, [Types::ServiceType], null: false
   end
 end

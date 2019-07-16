@@ -10,7 +10,7 @@ module Types
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
 
     field :cloud, Types::CloudType, null: false
-    # field :current_versions [Types::CurrentVersionType], null: true
+    field :current_versions, [Types::CurrentVersionType], null: true
     field :deployments, [Types::DeploymentType], null: true
     field :services, [Types::ServiceType], null: true
   end
