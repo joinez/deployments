@@ -1,6 +1,6 @@
 module Types
   RSpec.describe DeploymentType, type: :request do
-    xit 'query object' do
+    it 'query object' do
       deployment = create(:deployment)
       post '/graphql', params: { query: query_object(id: deployment.id) }
 
@@ -9,12 +9,17 @@ module Types
 
       expect(data).to include(
         'id' => be_present,
-        'startedAt' => be_present,
-        'finishedAt' => be_present
+        'createdAt' => be_present,
+        'updatedAt' => be_present,
+        'success' => be_present,
+        'duration' => be_present,
+        'environment' => be_present,
+        'currentVersions' => be_kind_of(Array),
+        'services' => be_kind_of(Array)
       )
     end
 
-    xit 'query all' do
+    it 'query all' do
       create_list(:deployment, 2)
       post '/graphql', params: { query: query_all }
 
@@ -24,9 +29,13 @@ module Types
 
       expect(data).to include(
         'id' => be_present,
-        'startedAt' => be_present,
-        'finishedAt' => be_present,
-        'service' => be_present
+        'createdAt' => be_present,
+        'updatedAt' => be_present,
+        'success' => be_present,
+        'duration' => be_present,
+        'environment' => be_present,
+        'currentVersions' => be_kind_of(Array),
+        'services' => be_kind_of(Array)
       )
     end
 
@@ -35,8 +44,19 @@ module Types
         {
           deployment(id: "#{id}") {
             id
-            startedAt
-            finishedAt
+            createdAt
+            updatedAt
+            success
+            duration
+            environment {
+              id
+            }
+            currentVersions {
+              id
+            }
+            services {
+              id
+            }
           }
         }
       GQL
@@ -47,11 +67,18 @@ module Types
         {
           deployments {
             id
-            startedAt
-            finishedAt
-            service {
+            createdAt
+            updatedAt
+            success
+            duration
+            environment {
               id
-              name
+            }
+            currentVersions {
+              id
+            }
+            services {
+              id
             }
           }
         }
