@@ -1,6 +1,6 @@
 module Types
   RSpec.describe ServiceType, type: :request do
-    xit 'query object' do
+    it 'query object' do
       service = create(:service)
       post '/graphql', params: { query: query_object(id: service.id) }
 
@@ -9,11 +9,16 @@ module Types
 
       expect(data).to include(
         'id' => be_present,
-        'name' => be_present
+        'name' => be_present,
+        'createdAt' => be_present,
+        'updatedAt' => be_present,
+        'currentVersions' => be_kind_of(Array),
+        'deployments' => be_kind_of(Array),
+        'environments' => be_kind_of(Array)
       )
     end
 
-    xit 'query all' do
+    it 'query all' do
       create_list(:service, 2)
       post '/graphql', params: { query: query_all }
 
@@ -23,7 +28,12 @@ module Types
 
       expect(data).to include(
         'id' => be_present,
-        'name' => be_present
+        'name' => be_present,
+        'createdAt' => be_present,
+        'updatedAt' => be_present,
+        'currentVersions' => be_kind_of(Array),
+        'deployments' => be_kind_of(Array),
+        'environments' => be_kind_of(Array)
       )
     end
 
@@ -33,6 +43,17 @@ module Types
           service(id: "#{id}") {
             id
             name
+            createdAt
+            updatedAt
+            currentVersions {
+              id
+            }
+            deployments {
+              id
+            }
+            environments {
+              id
+            }
           }
         }
       GQL
@@ -44,6 +65,17 @@ module Types
           services {
             id
             name
+            createdAt
+            updatedAt
+            currentVersions {
+              id
+            }
+            deployments {
+              id
+            }
+            environments {
+              id
+            }
           }
         }
       GQL
