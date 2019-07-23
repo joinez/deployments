@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateDeployments
+class CreateDeploymentInteractor
   include Interactor
 
   # rubocop:disable Metrics/AbcSize

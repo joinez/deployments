@@ -21,7 +21,7 @@ module Mutations
     field :errors, [String], null: false
 
     def resolve(cloud:, environment:, service_versions:, build_url:, success:, duration:)
-      d = CreateDeployments.call(
+      d = CreateDeploymentInteractor.call(
         cloud: cloud,
         environment: environment,
         service_versions: service_versions,
