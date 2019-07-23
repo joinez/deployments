@@ -9,7 +9,7 @@ gem 'interactor'
 gem 'pg'
 gem 'puma'
 gem 'rack-cors'
-gem 'rails', '~> 6.0.0.rc1'
+gem 'rails', '~> 6.0.0.rc2'
 
 group :development do
   gem 'graphiql-rails'
