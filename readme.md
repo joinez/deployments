@@ -41,7 +41,7 @@ The app is then available at http://localhost:8080 🎉
 
 ## Accessing data
 
-When the server is running, open the [graphiql ui](http://localhost:3000/graphiql) in your browser. Copy paste any of the following queries to fetch the data.
+When the server is running, open the [graphiql ui](http://localhost:3000/graphiql) in your browser. Copy paste any of the following queries to fetch the data. Some examples are:
 
 ```sh
 # All clouds and environments
@@ -109,9 +109,8 @@ mutation {
   }
 }
 
-# Or use curl to start or finish a deployment:
-curl -i -H 'Content-Type: application/json' -X POST -d '{"query": "mutation { startDeployment(input: { service: \"Application 3\", buildId: \"1\" }) { deployment { id } } }"}' localhost:3000/graphql
-curl -i -H 'Content-Type: application/json' -X POST -d '{"query": "mutation { finishDeployment(input: { service: \"Application 3\", buildId: \"1\" }) { deployment { id } } }"}' localhost:3000/graphql
+# Or use curl to create a deployment:
+curl -i -H 'Content-Type: application/json' -X POST -d '{"query": "mutation { createDeployment(input: { cloud: \"Google\", environment: \"production\", buildUrl: \"example.com/build/5\", success: true, duration: 60, serviceVersions: [{ service: \"Application2\", version: \"1.2.0\" }] }) { deployment { id } } }"}' localhost:3000/graphql
 ```
 
 ## Testing
