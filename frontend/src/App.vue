@@ -4,9 +4,19 @@
     <div v-if="$apollo.loading">Loading..</div>
     <div v-else>
       <ul id="deployments">
-        <li v-for="deployment in deployments" :key="deployment.id">
-          <p>#{{ deployment.id }} - {{ deployment.service.name }}</p>
-          <p>{{ deployment.startedAt }} - {{ deployment.finishedAt }}</p>
+        <li v-for="d in deployments" :key="d.id">
+          <p>
+            <a :href="'//' + d.buildUrl" target="_blank">#{{ d.id }}</a>
+            {{ d.environment.cloud.name }}
+            {{ d.environment.name }}
+            ({{ d.success ? 'successful' : 'failed' }} -
+            took {{ d.duration }} seconds)
+          </p>
+          <ul id="current-versions">
+            <li v-for="cv in d.currentVersions" :key="cv.id">
+              <p>{{ cv.service.name }} - {{ cv.version }}</p>
+            </li>
+          </ul>
           <hr>
         </li>
       </ul>
@@ -29,11 +39,20 @@ export default {
       {
         deployments {
           id
-          startedAt
-          finishedAt
-          service {
-            id
+          success
+          duration
+          buildUrl
+          environment {
             name
+            cloud {
+              name
+            }
+          }
+          currentVersions {
+            version
+            service {
+              name
+            }
           }
         }
       }`
@@ -54,5 +73,8 @@ export default {
 #deployments {
   list-style-type: none;
   text-align: left;
+}
+#current-versions {
+  list-style-type: none;
 }
 </style>
