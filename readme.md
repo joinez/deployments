@@ -91,33 +91,27 @@ For services:
 
 ## Creating data
 
-Use this mutation for creating new deployment entries:
+Use this mutation for creating a new deployment:
 
 ```sh
-# Start
+# This is an example of a successful deployment of Auth service 1.3.0 and
+# Application1 1.0.2 in AWS/staging, a duration of 60 seconds and the build URL
 mutation {
-  startDeployment(
-    input: { service: "Application 2", buildId: "1" }
-  ) {
-    deployment {
-      id
-      buildId
-      startedAt
-      finishedAt
+  createDeployment(
+    input: {
+      cloud: "AWS"
+      environment: "staging"
+      buildUrl: "example.com/build/4"
+      success: true
+      duration: 60
+      serviceVersions: [
+        { service: "Auth service", version: "1.3.0" }
+        { service: "Application1", version: "1.0.2" }
+      ]
     }
-  }
-}
-
-# Finish
-mutation {
-  finishDeployment(
-    input: { service: "Application 2", buildId: "1" }
   ) {
     deployment {
       id
-      buildId
-      startedAt
-      finishedAt
     }
   }
 }
