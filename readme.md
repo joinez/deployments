@@ -43,48 +43,30 @@ The app is then available at http://localhost:8080 🎉
 
 When the server is running, open the [graphiql ui](http://localhost:3000/graphiql) in your browser. Copy paste any of the following queries to fetch the data.
 
-For deployments:
-
 ```sh
-# All deployments
+# All clouds and environments
 {
-  deployments {
+  clouds {
     id
-    buildUrl
-    success
-    duration
-    environment {
+    name
+    environments {
       id
       name
     }
   }
 }
 
-# Single deployment
+# All deployments with services
 {
-  deployment(id: 1) {
-    buildId
-    startedAt
-    finishedAt
-  }
-}
-```
-
-For services:
-
-```sh
-# All services
-{
-  services {
+  deployments {
     id
-    name
-  }
-}
-
-# Single service
-{
-  service(id: 2) {
-    name
+    buildUrl
+    success
+    duration
+    services {
+      id
+      name
+    }
   }
 }
 ```
