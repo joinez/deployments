@@ -69,6 +69,17 @@ When the server is running, open the [graphiql ui](http://localhost:3000/graphiq
     }
   }
 }
+
+# All services with current versions
+{
+  services {
+    id
+    name
+    currentVersions {
+      version
+    }
+  }
+}
 ```
 
 ## Creating data
