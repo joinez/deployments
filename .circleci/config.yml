@@ -6,7 +6,7 @@ jobs:
         environment:
           PGHOST: 127.0.0.1
           PGUSER: root
-      - image: circleci/postgres:11.3-alpine
+      - image: circleci/postgres:11.4-alpine
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: backend_test
@@ -117,7 +117,7 @@ jobs:
           docker save npms > caches/npms.tar
 
           docker load < caches/frontend.tar || true
-          docker build -t frontend --target dev --cache-from npms --cache-from frontend frontend
+          docker build -t frontend --target production --cache-from npms --cache-from frontend frontend
           docker save frontend > caches/frontend.tar
 
           docker tag frontend joinez/deployments-frontend
