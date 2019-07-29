@@ -4,6 +4,8 @@ services:
   frontend:
     image: joinez/deployments-frontend
     container_name: deployments_frontend
+    environment:
+      VUE_APP_HOST: localhost
     depends_on:
       - backend
     ports:

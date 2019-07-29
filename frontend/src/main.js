@@ -7,7 +7,7 @@ Vue.use(VueApollo);
 
 //creating apollo client
 const client = new ApolloClient({
-  uri: 'http://localhost:3000/graphql'
+  uri: 'http://' + (process.env.VUE_APP_HOST || 'localhost') + ':3000/graphql'
 });
 
 const apolloProvider = new VueApollo({

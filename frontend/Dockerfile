@@ -23,6 +23,8 @@ ENV CACHE_ID 2
 
 ENV NODE_ENV production
 
+ENV VUE_APP_HOST \${VUE_APP_HOST}
+
 WORKDIR /usr/src
 
 COPY --from=npms /usr/src/node_modules/ /usr/src/node_modules/
@@ -37,6 +39,10 @@ RUN npm run build
 FROM nginx:${NGINX_VERSION}-alpine as production
 
 COPY --from=build /usr/src/dist /usr/share/nginx/html
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+CMD ["nginx", "-g", "daemon off;"]
 
 # ------------------------------------------------------------------------------
 # dev: copy npm packages used for dev & test
