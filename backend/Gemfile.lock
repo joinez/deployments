@@ -80,7 +80,7 @@ GEM
     graphiql-rails (1.7.0)
       railties
       sprockets-rails
-    graphql (1.9.8)
+    graphql (1.9.9)
     guard (2.15.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -121,7 +121,7 @@ GEM
     nio4r (2.4.0)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
-    notiffany (0.1.1)
+    notiffany (0.1.2)
       nenv (~> 0.1)
       shellany (~> 0.0)
     parallel (1.17.0)
