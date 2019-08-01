@@ -38,6 +38,8 @@ RUN npm run build
 # ------------------------------------------------------------------------------
 FROM nginx:${NGINX_VERSION}-alpine as production
 
+COPY docker-entrypoint.sh .
+
 COPY --from=build /usr/src/dist /usr/share/nginx/html
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
