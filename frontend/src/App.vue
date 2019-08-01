@@ -6,7 +6,7 @@
       <ul id="deployments">
         <li v-for="d in deployments" :key="d.id">
           <p>
-            <a :href="'//' + d.buildUrl" target="_blank">#{{ d.id }}</a>
+            <a :href="d.buildUrl" target="_blank">#{{ d.id }}</a>
             {{ d.environment.cloud.name }}
             {{ d.environment.name }}
             ({{ d.success ? 'successful' : 'failed' }} -
