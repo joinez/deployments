@@ -28,3 +28,8 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_DB: deployment_prod
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
