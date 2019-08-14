@@ -3,9 +3,8 @@
     <nav class="navbar">
       <ul class="nav-items">
         <li class="nav-item">
-          <a href="/deployments">
-            Deployments
-          </a>
+          <router-link to="/deployments">Deployments</router-link>&nbsp;
+          <router-link to="/clouds">Clouds</router-link>
         </li>
       </ul>
     </nav>
