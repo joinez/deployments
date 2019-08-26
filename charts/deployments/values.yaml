@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 2
 image:
-  repository: draft
-  tag: dev
+  repository: 10.102.206.107:5000/joinez/deployments
+  tag: 0.0.1
   pullPolicy: IfNotPresent
 
 # define environment variables here as a map of key: value
