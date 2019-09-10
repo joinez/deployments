@@ -80,8 +80,8 @@ GEM
     graphiql-rails (1.7.0)
       railties
       sprockets-rails
-    graphql (1.9.11)
-    guard (2.15.0)
+    graphql (1.9.12)
+    guard (2.15.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
       lumberjack (>= 1.0.12, < 2.0)
@@ -134,7 +134,7 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
-    puma (4.1.0)
+    puma (4.1.1)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-cors (1.0.3)
@@ -228,7 +228,7 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
-    zeitwerk (2.1.9)
+    zeitwerk (2.1.10)
 
 PLATFORMS
   ruby
