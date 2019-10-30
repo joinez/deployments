@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   backend:
     docker:
-      - image: circleci/ruby:2.6.4
+      - image: circleci/ruby:2.6.5
         environment:
           PGHOST: 127.0.0.1
           PGUSER: root
@@ -67,7 +67,7 @@ jobs:
           working_directory: frontend
   build-backend:
     docker:
-      - image: circleci/ruby:2.6.4
+      - image: circleci/ruby:2.6.5
     steps:
       - checkout
       - setup_remote_docker # Reminder: paid feature docker_layer_caching: true
