@@ -1,5 +1,5 @@
 ARG ALPINE_VERSION=3.10
-ARG RUBY_VERSION=2.6.4
+ARG RUBY_VERSION=2.6.5
 
 # ------------------------------------------------------------------------------
 # gems: install (tmp) build packages and production gems
