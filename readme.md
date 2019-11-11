@@ -22,7 +22,7 @@ Get your development environment up and running with following steps
 ./script/build.sh
 docker-compose up -d
 ```
-#### Or setup locally
+#### Or setup locally without docker
 ```sh
 # Info: this step can be repeated to update you enviroment as well
 ./script/setup.sh

@@ -23,7 +23,7 @@ services:
       - 3000:3000
     command: sh -c "rails s -b 0.0.0.0"
   db:
-    image: postgres:11.4-alpine
+    image: postgres:12.0-alpine
     container_name: deployments_db
     environment:
       POSTGRES_USER: root
