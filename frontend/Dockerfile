@@ -1,5 +1,5 @@
-ARG NGINX_VERSION=1.17.2
-ARG NODE_VERSION=12.6.0
+ARG NGINX_VERSION=1.17.5
+ARG NODE_VERSION=12.13.0
 
 # ------------------------------------------------------------------------------
 # npms: install (tmp) build packages and npm packages
