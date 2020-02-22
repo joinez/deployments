@@ -6,7 +6,7 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/bundle/**/*'
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Exclude:
     - 'app/controllers/graphql_controller.rb'
 
@@ -18,7 +18,7 @@ Metrics/BlockLength:
     - 'spec/**/*'
   Max: 50
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Metrics/MethodLength:

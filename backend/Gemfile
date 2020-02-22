@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.6.5'
+ruby '2.7.0'
 
 gem 'awesome_print'
 gem 'bootsnap'
@@ -9,7 +9,7 @@ gem 'interactor'
 gem 'pg'
 gem 'puma'
 gem 'rack-cors'
-gem 'rails', '~> 6.0.1'
+gem 'rails', '~> 6.0.2.1'
 
 group :development do
   gem 'graphiql-rails'
