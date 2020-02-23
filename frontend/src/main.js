@@ -5,15 +5,17 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 
 // Import components for the router:
-import Deployments from './components/Deployments'
 import Clouds from './components/Clouds'
+import Deployments from './components/Deployments'
+import Environment from './components/Environment'
 
 Vue.use(VueRouter)
 
 const routes = [
   { path: '', component: Deployments },
+  { path: '/clouds', component: Clouds },
   { path: '/deployments', component: Deployments },
-  { path: '/clouds', component: Clouds }
+  { path: '/environments/:id', component: Environment },
 ]
 
 const router = new VueRouter({

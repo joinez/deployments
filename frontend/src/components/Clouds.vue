@@ -1,15 +1,17 @@
 <template>
-  <ul id="clouds">
+  <ul class="clouds">
     <h2>Clouds</h2>
     <div v-if="$apollo.loading">Loading..</div>
     <div v-else>
       <li v-for="c in clouds" :key="c.id">
-        <p class="cloud">
+        <p>
           {{ c.name }}
         </p>
         <ul>
           <li v-for="e in c.environments" :key="e.id">
-            <p>{{ e.name }}</p>
+            <p>
+              <a :href="'#/environments/' + e.id">{{ e.name }}</a>
+            </p>
           </li>
         </ul>
       </li>
@@ -45,7 +47,7 @@ export default {
 </script>
 
 <style>
-#clouds {
+.clouds {
   background-color: #27293d;
   color: #fff;
   border-radius: 5px;
@@ -55,5 +57,8 @@ export default {
   margin-left: 12px;
   margin-right: 12px;
   list-style: none;
+}
+a {
+  color: #42b883;
 }
 </style>

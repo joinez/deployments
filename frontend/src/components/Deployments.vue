@@ -1,10 +1,10 @@
 <template>
-  <ul id="deployments">
+  <ul class="deployments">
     <h2>Deployments</h2>
     <div v-if="$apollo.loading">Loading..</div>
     <div v-else>
       <li v-for="d in deployments" :key="d.id">
-        <p class="deployment">
+        <p>
           <a :href="d.buildUrl" target="_blank">#{{ d.id }}</a>
           {{ d.environment.cloud.name }}
           {{ d.environment.name }}
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style>
-#deployments {
+.deployments {
   background-color: #27293d;
   color: #fff;
   border-radius: 5px;
@@ -70,7 +70,7 @@ export default {
   margin-right: 12px;
   list-style: none;
 }
-.deployment > a {
+a {
   color: #42b883;
 }
 </style>
