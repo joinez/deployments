@@ -11,7 +11,7 @@
           ({{ d.success ? 'successful' : 'failed' }} -
           took {{ d.duration }} seconds)
         </p>
-        <ul id="current-versions">
+        <ul>
           <li v-for="cv in d.currentVersions" :key="cv.id">
             <p>{{ cv.service.name }} - {{ cv.version }}</p>
           </li>
@@ -72,8 +72,5 @@ export default {
 }
 .deployment > a {
   color: #42b883;
-}
-#current-versions {
-  list-style: none;
 }
 </style>
