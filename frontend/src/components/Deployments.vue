@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { gql } from 'apollo-boost'
+import { getDeployments } from '../queries'
 
 export default {
   data: function() {
@@ -32,27 +32,7 @@ export default {
   },
   apollo: {
     deployments: {
-      query: gql`
-      {
-        deployments {
-          id
-          success
-          duration
-          buildUrl
-          environment {
-            name
-            cloud {
-              name
-            }
-          }
-          currentVersions {
-            version
-            service {
-              name
-            }
-          }
-        }
-      }`
+      query: getDeployments
     }
   }
 }

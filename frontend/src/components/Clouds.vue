@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { gql } from 'apollo-boost'
+import { getClouds } from '../queries'
 
 export default {
   data: function() {
@@ -30,17 +30,7 @@ export default {
   },
   apollo: {
     clouds: {
-      query: gql`
-      {
-        clouds {
-          id
-          name
-          environments {
-            id
-            name
-          }
-        }
-      }`
+      query: getClouds
     }
   }
 }
