@@ -1,28 +1,29 @@
 <template>
   <ul class="environment">
-    <h2>{{ environment.name }} {{ $route.params.id }}</h2>
+    <h2>{{ environment.name }}</h2>
     <div v-if="$apollo.loading">Loading..</div>
   </ul>
 </template>
 
 <script>
-import { gql } from 'apollo-boost'
+import { getEnvironment } from '../queries'
 
 export default {
   data: function() {
     return {
       environment: {},
+      routeParam: this.$route.params.id
     };
   },
   apollo: {
     environment: {
-      query: gql`
-      {
-        environment(id: 1) {
-          name
+      query: getEnvironment,
+      variables() {
+        return {
+          id: this.routeParam
         }
-      }`
-    }
+      }
+    },
   }
 }
 </script>
