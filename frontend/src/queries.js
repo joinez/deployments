@@ -40,6 +40,14 @@ export const getEnvironment = gql`
   query($id: ID!) {
     environment(id: $id) {
       name
+      services {
+        id
+        name
+        currentVersions {
+          id
+          version
+        }
+      }
     }
   }
 `

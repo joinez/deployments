@@ -2,6 +2,18 @@
   <ul class="environment">
     <h2>{{ environment.name }}</h2>
     <div v-if="$apollo.loading">Loading..</div>
+    <div v-else>
+      <li v-for="s in environment.services" :key="s.id">
+        <p>
+          {{ s.name }}
+        </p>
+        <ul>
+          <li v-for="cv in s.currentVersions" :key="cv.id">
+            <p>{{ cv.version }}</p>
+          </li>
+        </ul>
+      </li>
+    </div>
   </ul>
 </template>
 
