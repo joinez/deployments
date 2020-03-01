@@ -3,8 +3,7 @@
 class CreateDeploymentInteractor
   include Interactor
 
-  # rubocop:disable Metrics/AbcSize
-  def call
+  def call # rubocop:disable Metrics/AbcSize
     cloud = Cloud.find_or_create_by(name: context.cloud)
     environment = Environment.find_or_create_by(
       name: context.environment,
@@ -35,5 +34,4 @@ class CreateDeploymentInteractor
       context.fail!
     end
   end
-  # rubocop:enable Metrics/AbcSize
 end
