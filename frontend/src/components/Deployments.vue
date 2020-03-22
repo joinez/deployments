@@ -32,7 +32,8 @@ export default {
   },
   apollo: {
     deployments: {
-      query: getDeployments
+      query: getDeployments,
+      pollInterval: 30000
     }
   }
 }

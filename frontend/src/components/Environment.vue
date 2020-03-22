@@ -30,6 +30,7 @@ export default {
   apollo: {
     environment: {
       query: getEnvironment,
+      pollInterval: 5000,
       variables() {
         return {
           id: this.routeParam
