@@ -21,6 +21,7 @@ export const getDeployments = gql`
       duration
       buildUrl
       environment {
+        id
         name
         cloud {
           name
@@ -40,6 +41,9 @@ export const getEnvironment = gql`
   query($id: ID!) {
     environment(id: $id) {
       name
+      cloud {
+        name
+      }
       services {
         id
         name

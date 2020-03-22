@@ -5,11 +5,11 @@
     <div v-else>
       <li v-for="d in deployments" :key="d.id">
         <p>
-          <a :href="d.buildUrl" target="_blank">#{{ d.id }}</a>
-          {{ d.environment.cloud.name }}
-          {{ d.environment.name }}
+          #{{ d.id }}
+          <a :href="'#/environments/' + d.environment.id">{{ d.environment.cloud.name }}/{{ d.environment.name }}</a>
           ({{ d.success ? 'successful' : 'failed' }} -
           took {{ d.duration }} seconds)
+          <a :href="d.buildUrl" target="_blank">open build</a>
         </p>
         <ul>
           <li v-for="dv in d.deploymentVersions" :key="dv.id">
@@ -33,7 +33,7 @@ export default {
   apollo: {
     deployments: {
       query: getDeployments,
-      pollInterval: 30000
+      pollInterval: 10000
     }
   }
 }

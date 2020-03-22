@@ -39,7 +39,7 @@ module Types
     field :deployments, [Types::DeploymentType], null: false
 
     def deployments
-      Deployment.all
+      Deployment.order(created_at: :desc).first(20)
     end
 
     field :deployment, Types::DeploymentType, null: false do

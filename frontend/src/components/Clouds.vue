@@ -30,7 +30,8 @@ export default {
   },
   apollo: {
     clouds: {
-      query: getClouds
+      query: getClouds,
+      pollInterval: 10000
     }
   }
 }

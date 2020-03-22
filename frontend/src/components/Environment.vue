@@ -1,6 +1,6 @@
 <template>
   <ul class="environment">
-    <h2>{{ environment.name }}</h2>
+    <h2>{{ environment.cloud.name }}/{{ environment.name }}</h2>
     <div v-if="$apollo.loading">Loading..</div>
     <div v-else>
       <li v-for="s in environment.services" :key="s.id">
@@ -30,7 +30,7 @@ export default {
   apollo: {
     environment: {
       query: getEnvironment,
-      pollInterval: 5000,
+      pollInterval: 10000,
       variables() {
         return {
           id: this.routeParam
