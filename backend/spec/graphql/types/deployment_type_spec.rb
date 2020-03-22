@@ -14,7 +14,7 @@ module Types
         'success' => be_present,
         'duration' => be_present,
         'environment' => be_present,
-        'currentVersions' => be_kind_of(Array),
+        'deploymentVersions' => be_kind_of(Array),
         'services' => be_kind_of(Array)
       )
     end
@@ -34,7 +34,7 @@ module Types
         'success' => be_present,
         'duration' => be_present,
         'environment' => be_present,
-        'currentVersions' => be_kind_of(Array),
+        'deploymentVersions' => be_kind_of(Array),
         'services' => be_kind_of(Array)
       )
     end
@@ -51,7 +51,7 @@ module Types
             environment {
               id
             }
-            currentVersions {
+            deploymentVersions {
               id
             }
             services {
@@ -74,7 +74,7 @@ module Types
             environment {
               id
             }
-            currentVersions {
+            deploymentVersions {
               id
             }
             services {

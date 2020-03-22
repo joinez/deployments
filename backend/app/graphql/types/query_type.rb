@@ -65,6 +65,21 @@ module Types
       Service.find(id)
     end
 
+    # DeploymentVersions
+    field :versions, [Types::DeploymentVersionType], null: false
+
+    def deployment_versions
+      DeploymentVersion.all
+    end
+
+    field :deployment_version, Types::DeploymentVersionType, null: false do
+      argument :id, ID, required: true
+    end
+
+    def deployment_version(id:)
+      DeploymentVersion.find(id)
+    end
+
     # CurrentVersions
     field :current_versions, [Types::CurrentVersionType], null: false
 

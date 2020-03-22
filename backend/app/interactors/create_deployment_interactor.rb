@@ -19,6 +19,11 @@ class CreateDeploymentInteractor
 
     context.service_versions.each do |service_version|
       service = Service.find_or_create_by(name: service_version.to_h[:service])
+      DeploymentVersion.create(
+        deployment: deployment,
+        service: service,
+        version: service_version.to_h[:version]
+      )
       current_version = CurrentVersion.find_or_create_by(
         environment: environment,
         service: service

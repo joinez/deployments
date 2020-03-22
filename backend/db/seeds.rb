@@ -13,6 +13,11 @@ d1 = FactoryBot.create(:deployment, environment: e1)
 d2 = FactoryBot.create(:deployment, environment: e1)
 d3 = FactoryBot.create(:deployment, environment: e2)
 
+DeploymentVersion.destroy_all
+FactoryBot.create(:deployment_version, service: s1, deployment: d1)
+FactoryBot.create(:deployment_version, service: s2, deployment: d2)
+FactoryBot.create(:deployment_version, service: s3, deployment: d3)
+
 CurrentVersion.destroy_all
 FactoryBot.create(:current_version, environment: e1, service: s1, deployment: d1)
 FactoryBot.create(:current_version, environment: e1, service: s2, deployment: d2)

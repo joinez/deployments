@@ -26,7 +26,7 @@ export const getDeployments = gql`
           name
         }
       }
-      currentVersions {
+      deploymentVersions {
         version
         service {
           name

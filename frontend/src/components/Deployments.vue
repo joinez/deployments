@@ -12,8 +12,8 @@
           took {{ d.duration }} seconds)
         </p>
         <ul>
-          <li v-for="cv in d.currentVersions" :key="cv.id">
-            <p>{{ cv.service.name }} - {{ cv.version }}</p>
+          <li v-for="dv in d.deploymentVersions" :key="dv.id">
+            <p>{{ dv.service.name }} - {{ dv.version }}</p>
           </li>
         </ul>
       </li>
