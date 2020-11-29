@@ -31,7 +31,7 @@ services:
       - 3000:3000
     command: sh -c "rm -f tmp/pids/* && rails db:setup && rails s -b 0.0.0.0"
   db:
-    image: postgres:13.1-alpine
+    image: postgres:12.1-alpine
     container_name: deployments_db
     environment:
       POSTGRES_DB: deployment_dev
