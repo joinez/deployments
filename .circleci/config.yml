@@ -6,10 +6,11 @@ jobs:
         environment:
           PGHOST: 127.0.0.1
           PGUSER: root
-      - image: circleci/postgres:12.0-alpine
+      - image: circleci/postgres:13.1-alpine
         environment:
-          POSTGRES_USER: root
           POSTGRES_DB: backend_test
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_USER: root
     steps:
       - checkout
       - restore_cache:
@@ -67,7 +68,7 @@ jobs:
           working_directory: frontend
   build-backend:
     docker:
-      - image: circleci/ruby:2.7.0
+      - image: circleci/ruby:2.7.2
     steps:
       - checkout
       - setup_remote_docker # Reminder: paid feature docker_layer_caching: true

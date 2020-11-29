@@ -1,7 +1,10 @@
-version: "3.7"
+version: "3.8"
 
 services:
   frontend:
+    build:
+      context: frontend/.
+      target: dev
     image: deployments-frontend
     container_name: deployments_frontend
     depends_on:
@@ -13,6 +16,9 @@ services:
       - 8080:8080
     command: npm run serve
   backend:
+    build:
+      context: backend/.
+      target: dev
     image: deployments-backend
     container_name: deployments_backend
     depends_on:
@@ -25,8 +31,9 @@ services:
       - 3000:3000
     command: sh -c "rm -f tmp/pids/* && rails db:setup && rails s -b 0.0.0.0"
   db:
-    image: postgres:12.0-alpine
+    image: postgres:13.1-alpine
     container_name: deployments_db
     environment:
-      POSTGRES_USER: root
       POSTGRES_DB: deployment_dev
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: root
