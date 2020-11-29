@@ -47,7 +47,7 @@ jobs:
           path: ~/rspec
   frontend:
     docker:
-      - image: circleci/node:12.16.1
+      - image: circleci/node:14.15.1
     steps:
       - checkout
       - restore_cache:
@@ -101,7 +101,7 @@ jobs:
             - caches/backend.tar
   build-frontend:
     docker:
-      - image: circleci/node:12.16.1
+      - image: circleci/node:14.15.1
     steps:
       - checkout
       - setup_remote_docker

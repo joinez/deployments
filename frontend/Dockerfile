@@ -1,10 +1,10 @@
-ARG NGINX_VERSION=1.17.5
-ARG NODE_VERSION=12.16.1
+ARG NGINX_VERSION=1.19.5
+ARG NODE_VERSION=14.15.1
 
 # ------------------------------------------------------------------------------
 # npms: install (tmp) build packages and npm packages
 # ------------------------------------------------------------------------------
-FROM node:${NODE_VERSION}-alpine AS npms
+FROM node:${NODE_VERSION}-alpine3.12 AS npms
 
 ENV CACHE_ID 1
 
@@ -17,7 +17,7 @@ RUN npm i && rm -rf /root/.npm/_cacache
 # ------------------------------------------------------------------------------
 # build: compile dists for production
 # ------------------------------------------------------------------------------
-FROM node:${NODE_VERSION}-alpine as build
+FROM node:${NODE_VERSION}-alpine3.12 as build
 
 ENV CACHE_ID 2
 
@@ -49,7 +49,7 @@ CMD ["nginx", "-g", "daemon off;"]
 # ------------------------------------------------------------------------------
 # dev: copy npm packages used for dev & test
 # ------------------------------------------------------------------------------
-FROM node:${NODE_VERSION}-alpine AS dev
+FROM node:${NODE_VERSION}-alpine3.12 AS dev
 
 ENV CACHE_ID 3
 
