@@ -5,6 +5,7 @@ AllCops:
     - 'bin/*'
     - 'db/schema.rb'
     - 'vendor/bundle/**/*'
+  NewCops: enable
 
 Naming/MethodParameterName:
   Exclude:

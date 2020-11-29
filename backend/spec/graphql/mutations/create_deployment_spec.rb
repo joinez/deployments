@@ -2,8 +2,8 @@ module Mutations
   RSpec.describe CreateDeployment, type: :request do
     let(:cloud) { build(:cloud) }
     let(:environment) { build(:environment) }
-    let(:service_1) { build(:service) }
-    let(:service_2) { build(:service) }
+    let(:service1) { build(:service) }
+    let(:service2) { build(:service) }
 
     it 'create new deployment' do
       expect do
@@ -30,8 +30,8 @@ module Mutations
               success: true
               duration: 60
               serviceVersions: [
-                { service: "#{service_1.name}", version: "0.1.0" }
-                { service: "#{service_2.name}", version: "1.0.2" }
+                { service: "#{service1.name}", version: "0.1.0" }
+                { service: "#{service2.name}", version: "1.0.2" }
               ]
             }
           ) {
